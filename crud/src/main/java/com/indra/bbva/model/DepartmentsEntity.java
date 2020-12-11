@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -14,25 +15,26 @@ import javax.validation.constraints.NotNull;
 public class DepartmentsEntity {
 
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
 	@Column(name="DEPARTMENT_ID")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="DEPARTMENTS_SEQ")
+    @SequenceGenerator(name="DEPARTMENTS_SEQ", sequenceName = "DEPARTMENTS_SEQ", allocationSize=1)
 	private int departmentID;
 	
 	@NotNull
 	@Column(name="DEPARTMENT_NAME")
 	private String departmentName;
 	
-	@NotNull
-	@Column(name="MANAGER_ID")
-	private int managerID;
 	
-	@NotNull
+	@Column(name="MANAGER_ID")
+	private Integer managerID;
+	
+	
 	@Column(name="LOCATION_ID")
 	private int locationID;
 	
 	public DepartmentsEntity() {}
 	
-	public DepartmentsEntity(int departmentID, String departmentName, int managerID, int locationID) {
+	public DepartmentsEntity(int departmentID, String departmentName, Integer managerID, int locationID) {
 	
 		this.departmentID = departmentID;
 		this.departmentName = departmentName;
@@ -56,11 +58,11 @@ public class DepartmentsEntity {
 		this.departmentName = departmentName;
 	}
 
-	public int getManagerID() {
+	public Integer getManagerID() {
 		return managerID;
 	}
 
-	public void setManagerID(int managerID) {
+	public void setManagerID(Integer managerID) {
 		this.managerID = managerID;
 	}
 

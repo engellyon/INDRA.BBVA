@@ -3,17 +3,22 @@ package com.indra.bbva.model;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
+@Entity
+@Table(name="EMPLOYEES")
 public class EmployessEntity {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name="EMPLOYEE_ID")
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="EMPLOYEES_SEQ")
+    @SequenceGenerator(name="EMPLOYEES_SEQ", sequenceName = "EMPLOYEES_SEQ", allocationSize=1)
 	private int employeeId;
 	
 	@Column(name="FIRST_NAME")
@@ -30,25 +35,25 @@ public class EmployessEntity {
 	@Column(name="PHONE_NUMBER")
 	private String phoneNumbre;
 	
-	@NotNull @Past
+	@NotNull //@Past
 	@Column(name="HIRE_DATE")
 	private Date hireDate;
 	
-	@NotNull @Past
+	@NotNull //@Past
 	@Column(name="JOB_ID")
 	private String jobId;
 	
 	@Column(name="SALARY")
-	private float salary;
+	private Float salary;
 	
 	@Column(name="COMMISSION_PCT")
-	private float commissionPCT;
+	private  Float commissionPCT;
 	
 	@Column(name="MANAGER_ID")
-	private int managerID;
+	private Integer managerID;
 	
 	@Column(name="DEPARTMENT_ID")
-	private int departmentID;
+	private Integer departmentID;
 	
 
 	
@@ -121,19 +126,19 @@ public class EmployessEntity {
 	public void setSalary(float salary) {
 		this.salary = salary;
 	}
-	public float getCommissionPCT() {
+	public Float getCommissionPCT() {
 		return commissionPCT;
 	}
 	public void setCommissionPCT(float commissionPCT) {
 		this.commissionPCT = commissionPCT;
 	}
-	public int getManagerID() {
+	public Integer getManagerID() {
 		return managerID;
 	}
 	public void setManagerID(int managerID) {
 		this.managerID = managerID;
 	}
-	public int getDepartmentID() {
+	public Integer getDepartmentID() {
 		return departmentID;
 	}
 	public void setDepartmentID(int departmentID) {
