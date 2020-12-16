@@ -1,19 +1,31 @@
 package com.indra.bbva.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="LOCATIONS")
-public class LocationEntity {
+@JsonIgnoreProperties({"hibernateLazyInitializer"})
+public class LocationEntity implements Serializable {
 	
+	
+	private static final long serialVersionUID = 1L;
+
 	@Id
 	@Column(name="LOCATION_ID")
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator="LOCATIONS_SEQ")
@@ -33,11 +45,26 @@ public class LocationEntity {
 	@Column(name="STATE_PROVINCE")
 	private String stateProvince;
 	
-	@Size(min=2, max=2)
 	@Column(name="COUNTRY_ID")
 	private String  countryID;
 	
+	@ManyToOne(targetEntity = CountriesEntity.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "COUNTRY_ID", insertable = false, updatable = false)
+	@JsonIgnore
+	private CountriesEntity country;
 	
+	
+	
+	
+	
+	public CountriesEntity getCountry() {
+		return country;
+	}
+
+	public void setCountry(CountriesEntity country) {
+		this.country = country;
+	}
+
 	public LocationEntity() {}
 
 	public LocationEntity(int locationID, String streetAddress, String postalCode, String city, String stateProvince,

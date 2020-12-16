@@ -36,5 +36,12 @@ public class CountriesServicesImp implements CountriesServices {
 	public void deleteCountry(String countryID) {
 		repoCountry.deleteById(countryID);
 	}
+
+	
+	/*
+	@Override
+	public List<CountriesEntity> getJoinCountrieRegion() {
+		return repoCountry.findAllRegion_id();
+	}*/
 	
 }

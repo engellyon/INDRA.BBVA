@@ -7,6 +7,9 @@ import com.indra.bbva.model.CountriesEntity;
 
 public interface CountriesServices {
 	
+	//public abstract List<CountriesEntity> getJoinCountrieRegion();
+	
+	
 	public abstract List<CountriesEntity> getCountries();
 	public abstract ResponseEntity<Object> getCountry(String countryID);
 	public abstract ResponseEntity<Object> createCountry(CountriesEntity country);

@@ -26,8 +26,14 @@ public class CountriesController {
 	@Autowired
 	private CountriesServices countriesService;
 	
-	@Autowired
-	private CountriesRepository countryRepository;
+	//@Autowired
+	//private CountriesRepository countryRepository;
+	
+	/*@GetMapping("/join")
+	public List<CountriesEntity> getJoinCountrieRegion(){
+		return countriesService.getJoinCountrieRegion();
+	}*/
+	
 	
 	
 	@GetMapping("/countries")
