@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import com.indra.bbva.model.CountriesEntity;
+import com.indra.bbva.model.CountryJoinRegion;
 import com.indra.bbva.repository.CountriesRepository;
 
 @Service
@@ -37,11 +38,12 @@ public class CountriesServicesImp implements CountriesServices {
 		repoCountry.deleteById(countryID);
 	}
 
-	
-	/*
 	@Override
-	public List<CountriesEntity> getJoinCountrieRegion() {
-		return repoCountry.findAllRegion_id();
-	}*/
+	public List<CountryJoinRegion> getJoinCountrieRegion() {
+		return repoCountry.getJoinCountrieRegion();
+	}
 	
+
+	
+
 }

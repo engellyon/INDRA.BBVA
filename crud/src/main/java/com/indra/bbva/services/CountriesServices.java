@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 import com.indra.bbva.model.CountriesEntity;
+import com.indra.bbva.model.CountryJoinRegion;
 
 public interface CountriesServices {
 	
-	//public abstract List<CountriesEntity> getJoinCountrieRegion();
+	public abstract List<CountryJoinRegion> getJoinCountrieRegion();
 	
 	
 	public abstract List<CountriesEntity> getCountries();

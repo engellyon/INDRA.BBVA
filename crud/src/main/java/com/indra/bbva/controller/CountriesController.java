@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.indra.bbva.model.CountriesEntity;
+import com.indra.bbva.model.CountryJoinRegion;
 import com.indra.bbva.repository.CountriesRepository;
 import com.indra.bbva.services.CountriesServices;
 
@@ -29,10 +30,11 @@ public class CountriesController {
 	//@Autowired
 	//private CountriesRepository countryRepository;
 	
-	/*@GetMapping("/join")
-	public List<CountriesEntity> getJoinCountrieRegion(){
-		return countriesService.getJoinCountrieRegion();
-	}*/
+	//Método que nos regresa el pais y seu region con un Join
+	@GetMapping("/join")
+	public List<CountryJoinRegion> getJoinInformation() {
+		return countriesService.getJoinCountrieRegion(); 
+	}
 	
 	
 	
